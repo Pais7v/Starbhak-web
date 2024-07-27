@@ -136,15 +136,6 @@ svg:hover {
     height: 36px;
     margin-bottom: 5px;
   }
-  .item-div-container p {
-    padding-right: 810px;
-    line-height: 36px;
-    padding-left: 10px;
-    padding: right;
-    vertical-align: middle;
-    display: inline-block;
-    font-weight: bold;
-  }
   .item-div-container img {
     margin: 0px 0px;
   }
@@ -152,12 +143,26 @@ svg:hover {
     width: 100%;
     height: 475px;
     border: 1px solid darkgray;
+    
   }
   .food-menu-container {
     overflow-y: scroll;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     grid-gap: 5px;
+    
+  }
+  .menu {
+    margin-top: 10px;
+    width: 100%; /* Atur lebar kartu sesuai kebutuhan */
+    border: 1px solid #ddd; /* Tambahkan garis tepi jika diinginkan */
+    border-radius: 8px; /* Tambahkan sudut melengkung jika diinginkan */
+    overflow: hidden; /* Hindari konten melewati batas kartu */
+    transition: transform 0.3s ease-in-out;
+  }
+  .menu:hover {
+    transform: scale(1.02); /* Ubah nilai scale sesuai kebutuhan */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Efek bayangan saat dihover */
   }
   .food-menu-container button{
     height: 200px;
@@ -167,15 +172,13 @@ svg:hover {
     border-radius: 8px;
   }
   .menu img{
-    width: 65px;
+    width: 60px;
+    transition: transform 0.3s ease-in-out;
+  }
+  .menu:hover img {
+    transform: scale(1.2); /* Ubah nilai scale sesuai kebutuhan */
   }
  
-  /* footer */
-  .footer-first-row-container {
-    text-align: right;
-    height: 70px;
-    padding-right: 10px;
-  }
   .print-button-container {
     height:100%;
     display: flex;
@@ -196,7 +199,116 @@ svg:hover {
     height: 25px;
     background-color: blue;
     padding-left: 5px;
+    margin-top: 10px;
   }
   .footer-second-row-container p{
     color: white;
   }
+  .printable-area {
+    display: block;
+  }
+  
+  @media print {
+    .printable-area {
+      display: none;
+    }
+  }
+  #searchMenu {
+    margin-left: 42pc;
+  }
+  /* Google Fonts - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  font-size: 16px; /* Misalnya, ubah ukuran font untuk seluruh halaman */
+  
+}
+
+.input-box {
+  position: relative;
+  height: 35px; /* Ubah tinggi sesuai kebutuhan */
+  max-width: 55px; /* Ubah lebar maksimum sesuai kebutuhan */
+  width: 100%;
+  border-radius: 6px;
+  background-color: transparent;
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  margin-left: 8px;
+  
+  
+  
+}
+
+.input-box.open {
+  max-width: 350px;
+}
+
+input {
+  position: relative;
+  outline: none;
+  border: none;
+  height: 100%;
+  width: 100%;
+  border-radius: 6px;
+  font-size: 13px; /* Ubah ukuran font sesuai kebutuhan */
+  font-weight: 400;
+  color: black;
+  background-color: rgb(255, 255, 255);
+}
+
+.input-box.open {
+  padding: 0 15px 0 65px;
+}
+
+.icon {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 0;
+  width: 60px;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(255, 255, 255);
+}
+
+.search-icon,
+.close-icon {
+  position: absolute;
+  top: 50%;
+  font-size: 20px; /* Ubah ukuran ikon sesuai kebutuhan */
+  transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.search-icon {
+  color: rgb(51, 102, 212);
+  transform: translateY(-50%) rotate(90deg);
+}
+
+.input-box.open .search-icon {
+  transform: translateY(-50%) rotate(0);
+}
+
+.close-icon {
+  right: -45px;
+  color: rgb(51, 102, 212);
+  padding: 5px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-50%);
+  
+}
+
+.input-box.open .close-icon {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(-50%) rotate(180deg);
+}
+
+
